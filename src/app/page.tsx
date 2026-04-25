@@ -1,6 +1,8 @@
 import { getNavigation } from '@/lib/api'
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic'
+
 export default async function HomePage() {
   const categories = await getNavigation()
   const totalSubjects = categories.reduce((n, c) => n + (c.subjects?.length ?? 0), 0)
