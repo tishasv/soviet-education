@@ -57,7 +57,7 @@ export async function getModule(
     .from('blocks')
     .select(`
       id, type, sort_order, content,
-      exercise_options ( id, text, is_correct, sort_order )
+      exercise_options ( id, block_id, text, is_correct, sort_order )
     `)
     .eq('module_id', moduleData.id)
     .is('parent_id', null)
@@ -88,7 +88,7 @@ async function getChildBlocks(parentId: string): Promise<Block[]> {
     .from('blocks')
     .select(`
       id, type, sort_order, content,
-      exercise_options ( id, text, is_correct, sort_order )
+      exercise_options ( id, block_id, text, is_correct, sort_order )
     `)
     .eq('parent_id', parentId)
     .order('sort_order')
