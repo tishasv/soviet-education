@@ -14,7 +14,7 @@ export async function getNavigation(): Promise<Category[]> {
     `)
     .order('sort_order')
 
-  if (error) throw error
+  if (error) return []
 
   return (categories ?? []).map((cat) => ({
     ...cat,
